@@ -6,6 +6,7 @@ public class Character : MonoBehaviour
 {
     public int maxHealth = 100;
     public Healthbar healthbar;
+    public GameObject damageText;
 
     private int curHealth;
 
@@ -19,5 +20,7 @@ public class Character : MonoBehaviour
     {
         curHealth -= damage;
         healthbar.UpdateHealth((float)curHealth / (float)maxHealth);
+        DamageIndicator indicator = Instantiate(damageText, transform.position, Quaternion.identity).GetComponent<DamageIndicator>();
+        indicator.SetDamageText(damage);
     }
 }
